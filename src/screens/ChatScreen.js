@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TextInput ,FlatList, Keyboard, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View,TextInput ,FlatList, Keyboard, ActivityIndicator , Image } from 'react-native';
 import React, { useContext, useState, useEffect } from 'react';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -57,10 +57,39 @@ const ChatScreen = ({navigation}) =>{
             ],
         });
     }
+    const userImages = {};
+    function getRandomImage(username) {
+        if (!userImages[username]) {
+          const images = [
+            'https://preview.redd.it/an871k4o1sn51.png?width=440&format=png&auto=webp&s=85dcd6cb73b8760802e254ee14dfa3c7ab444591',
+            'https://preview.redd.it/iio3xm4o1sn51.png?width=440&format=png&auto=webp&s=2b9fb1b29396502998feda5c6ed2ed75919c6ad8',
+            'https://preview.redd.it/ppawzo4o1sn51.png?width=440&format=png&auto=webp&s=d09c261013546996e8325d507ff230a7e9513793',
+            'https://i.redd.it/9kvk25sh2sn51.png',
+            'https://i.redd.it/xyqo6hx42sn51.png',
+            'https://preview.redd.it/xprpkp063sn51.png?width=440&format=png&auto=webp&s=5d51eb262af4a50e8f935218feb52682540aa525',
+            'https://i.redd.it/0j244l4o1sn51.png',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIUEpl0o8y889_4k8SF0GXNUsMlmxUHgbaEBEicyQt0vFxYBbTeVl23XlBzocxrMr_Jcs&usqp=CAU',
+            // เพิ่ม รูป
+          ];
+          const randomIndex = Math.floor(Math.random() * images.length);
+          userImages[username] = images[randomIndex];
+        }
+        return userImages[username];
+    }
     return(
         <View style = {styles.container}>
-          
-            <FlatList data={messages} renderItem={({ item }) => <Message {...item} right={username === item.user} />} keyExtractor={(item) => item.id}  />
+            <FlatList 
+                data={messages} 
+                renderItem={({ item }) => (
+                    <Message
+                        {...item} 
+                        right={username === item.user} 
+                        image={getRandomImage(item.user)}
+                        // image = 'https://logos-world.net/wp-content/uploads/2021/08/Among-Us-Logo.png'
+                    />
+                )} 
+                keyExtractor={(item) => item.id}  
+            />
             
             <View style = {styles.bottomInput} >
                 <TextInput placeholder = "Write a message" style={styles.input} onChangeText={(text) => setMessage(text)}/>
