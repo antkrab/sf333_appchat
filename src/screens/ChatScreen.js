@@ -94,10 +94,11 @@ const ChatScreen = ({navigation}) =>{
             <View style = {styles.bottomInput} >
                 <TextInput placeholder = "Write a message" style={styles.input} onChangeText={(text) => setMessage(text)}/>
                 <TouchableOpacity style = {styles.btnSend} onPress={ sendMessage }>
-                    <MaterialCommunityIcons name = "send" color = {"white"} size={25}/>
+                    <MaterialCommunityIcons name = "send" color = {"#fff"} size={25}/>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.btnLogout} onPress={ returnToHome }><Text>Exit</Text></TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.btnLogout} onPress={ returnToHome }><Text>Logout</Text></TouchableOpacity>
+            
         </View>
     )
 }
@@ -106,7 +107,7 @@ export default ChatScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "white"
+        backgroundColor: "#5d2586"
     },
     bottomInput: {
         width: "100%",
@@ -114,35 +115,39 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "white",
+        backgroundColor: "#5d2586",
         marginVertical: 5,
 
     },
     input: {
-        width: "80%",
+        width: "70%",
         borderWidth: 1,
-        height: 50,
+        height: 45,
         borderRadius: 10,
         paddingHorizontal: 20,
         fontSize: 20,
+        backgroundColor: "white"
         
     },
     btnSend:{
         height: 45,
-        width: 60,
+        width: 50,
         flex: 0,
-        backgroundColor: "cyan",
+        backgroundColor: "#50b848",
         alignItems: "center",
         justifyContent: "center",
-        paddingHorizontal: 10,
-        borderRadius: 20,
+        borderRadius: 10,
+        marginLeft: 5,
     },
     btnLogout:{
-        width: "100%",
-        height: 35,
+        height: 45,
+        width: 50,
+        fontSize: 20,
         backgroundColor:"red",
         alignSelf:'center',
         alignItems: "center",
         justifyContent: "center",
+        borderRadius: 10,
+        marginLeft: 5,
     },
   });
