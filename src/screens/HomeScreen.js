@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
             index: 0,
             routes: [
                 {
-                    name: "Chat",
+                    name: "ChatRoomsScreen",
                 },
             ],
         });

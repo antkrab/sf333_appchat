@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View,TextInput ,FlatList, Keyboard, ActivityIndicator , Image } from 'react-native';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect , useRoute  } from 'react';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Message from '../components/Message';
 import UserContext from '../context/UserContext';
+import ChatRoom from '../context/ChatRoom';
 import { collection, onSnapshot, query, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 import dayjs from 'dayjs';
@@ -12,15 +13,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 var relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime)
 
-const ChatScreen = ({navigation}) =>{
+const ChatScreen = ({navigation }) =>{
 
     const { username } = useContext(UserContext);
+    const { roomname } = useContext(ChatRoom);
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState("");
+    const dbname = "game"
+
     
     useEffect(() =>{
-        
-        const q = query(collection(db,"messages"), orderBy("timestamp","asc"));
+        const q = query(collection(db,dbname), orderBy("timestamp","asc"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const newMessages = [];
             querySnapshot.forEach((doc) => {
@@ -36,7 +39,7 @@ const ChatScreen = ({navigation}) =>{
     },[]);
 
     const sendMessage = async () => {
-        await addDoc(collection(db,"messages"),{
+        await addDoc(collection(db,dbname),{
             user: username,
             content: message,
             timestamp: serverTimestamp(),
