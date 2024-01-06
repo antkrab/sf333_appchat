@@ -27,7 +27,7 @@ export default function Login({navigation}) {
                     style={styles.input}
                     placeholder="Enter email"
                     autoCapitalize="none"
-                    keyboardType="emailAddress"
+                    keyboardType="email-address"
                     autoFocus={true}
                     value={email}
                     onChange={(text) => setEmail(text)}
