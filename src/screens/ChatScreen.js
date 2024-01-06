@@ -19,7 +19,7 @@ const ChatScreen = ({ navigation , route }) => {
     const [message, setMessage] = useState("");
 
     let dbname = route.params?.dbname || 'game';
-    console.log(dbname);
+    
 
     
     useEffect(() =>{
