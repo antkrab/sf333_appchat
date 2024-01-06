@@ -1,14 +1,14 @@
-import React, { useSate} from "react";
+import React, { useState} from "react";
 import { StyleSheet ,Text ,View ,Button ,TextInput ,Image ,SafeAreaView , TouchableOpacity, Alert } from "react-native";
 import {signInWithEmailEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebase";
-const backImage = require("../assets/icon.png");
+
 
 export default function Login({navigation}) {
 
-    const [email, setEmail] = useSate("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    
     const onHandleLogin = () => {
         if (email !== "" && password !=="") {
             signInWithEmailEmailAndPassword(auth, email, password)
@@ -19,7 +19,7 @@ export default function Login({navigation}) {
 
     return (
         <View style={styles.container}>
-            <Image source={backImage} style={styles.backImage} />
+            {/* <Image source={backImage} style={styles.backImage} /> */}
             <View style={styles.whiteSheet}/>
             <SafeAreaView style={styles.form}>
                 <Text style={styles.title}></Text>
@@ -29,7 +29,7 @@ export default function Login({navigation}) {
                     autoCapitalize="none"
                     keyboardType="emailAddress"
                     autoFocus={true}
-                    value={ture}
+                    value={email}
                     onChange={(text) => setEmail(text)}
                 />
                 <TextInput
