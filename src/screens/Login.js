@@ -1,19 +1,43 @@
-import React, { useState} from "react";
+import React, { useState, useContext} from "react";
 import { StyleSheet ,Text ,View ,Button ,TextInput ,Image ,SafeAreaView , TouchableOpacity, Alert } from "react-native";
-import {signInWithEmailEmailAndPassword} from "firebase/auth";
+import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebase";
-
+import { collection, onSnapshot, query, orderBy, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
+import UserContext from '../context/UserContext';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login({navigation}) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const { setUsername } = useContext(UserContext);
     
     const onHandleLogin = () => {
+        // if (email !== "" && password !=="") {
+        //     signInWithEmailAndPassword(auth, email, password)
+        //      .then(() => console.log("Login success"))
+        //      .catch((err) => Alert.alert("Login error", err.message));
+        // }
         if (email !== "" && password !=="") {
-            signInWithEmailEmailAndPassword(auth, email, password)
-             .then(() => console.log("Login success"))
-             .catch((err) => Alert.alert("Login error", err.message));
+            const q = query(collection(db,"user"));
+            const userData = [];
+            const unsubscribe = onSnapshot(q, (querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    userData.push({
+                        ...doc.data(),
+                    });
+                });
+                userData.forEach(myFunc);
+                function  myFunc(value){
+                    if(email === value.email && password === value.password){
+                        setUsername(value.display_name);
+                        AsyncStorage.setItem("username",value.display_name);
+                        navigation.navigate("ChatRoomsScreen");
+                    }
+                }
+            });
+            
         }
     }
 
@@ -30,7 +54,7 @@ export default function Login({navigation}) {
                     keyboardType="email-address"
                     autoFocus={true}
                     value={email}
-                    onChange={(text) => setEmail(text)}
+                    onChangeText={(text) => setEmail(text)}
                 />
                 <TextInput
                     style={styles.input}

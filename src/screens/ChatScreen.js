@@ -23,6 +23,7 @@ const ChatScreen = ({ navigation , route }) => {
 
     
     useEffect(() =>{
+
         const q = query(collection(db,dbname), orderBy("timestamp","asc"));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const newMessages = [];
@@ -55,7 +56,7 @@ const ChatScreen = ({ navigation , route }) => {
             index: 0,
             routes: [
                 {
-                    name: "Home",
+                    name: "Login",
                 },
             ],
         });
