@@ -12,7 +12,7 @@ export default function Login({navigation}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { setUsername } = useContext(UserContext);
-    
+    var isUser = false;
     const onHandleLogin = () => {
         // if (email !== "" && password !=="") {
         //     signInWithEmailAndPassword(auth, email, password)
@@ -33,8 +33,12 @@ export default function Login({navigation}) {
                     if(email === value.email && password === value.password){
                         setUsername(value.display_name);
                         AsyncStorage.setItem("username",value.display_name);
+                        isUser = true;
                         navigation.navigate("ChatRoomsScreen");
                     }
+                }
+                if(!isUser){
+                    alert("Login Error!");
                 }
             });
             
