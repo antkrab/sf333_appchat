@@ -16,15 +16,16 @@ const ChatRoomsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.backButton}>
-        <MaterialIcons name="arrow-back" size={24} color="black" />
+        <MaterialIcons name="arrow-back" size={24} color="white" />
       </TouchableOpacity>
+      <Text style={styles.headerText}>Chat Room</Text>
       <FlatList
         data={chatRooms}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => sentname(item.id.toString())}>
             <View style={styles.roomContainer}>
-              <Text>{item.category}</Text>
+              <Text style={styles.normalText}>{item.category}</Text>
             </View>
           </TouchableOpacity>
         )}
@@ -38,17 +39,36 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#5d2586',
   },
   roomContainer: {
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    marginVertical:5,
+    backgroundColor: '#f57c00',
+    width: 350,
+    height:50,
+    borderRadius: 30,
   },
   backButton: {
     position: 'absolute',
     top: 30,
     left: 10,
     zIndex: 1,
+  },
+  normalText: {
+      fontSize: 20,
+      marginLeft: 20,
+      marginTop: 10,
+      color:'white',
+      fontWeight:'bold',
+    },
+    headerText: {
+      fontSize: 40,
+      marginTop:40, 
+      flexDirection: 'row', 
+      fontWeight: "bold",
+      marginTop: 20,
+      marginBottom:20,
+      color:'#50b848',
   },
 });
 

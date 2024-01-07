@@ -15,7 +15,7 @@ const AuthLoading = ({ navigation }) =>{
                     routes: [{ name: "Chat" }],
                 })
             }else{
-                navigation.navigate("Home");
+                navigation.navigate("Login");
             }
         })();
     },[]);
