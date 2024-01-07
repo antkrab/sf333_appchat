@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f57c00',
     width: 350,
     height:50,
+    borderRadius: 30,
   },
   backButton: {
     position: 'absolute',
@@ -55,7 +56,8 @@ const styles = StyleSheet.create({
   },
   normalText: {
       fontSize: 20,
-      margin: 10,
+      marginLeft: 20,
+      marginTop: 10,
       color:'white',
       fontWeight:'bold',
     },

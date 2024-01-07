@@ -48,7 +48,7 @@ export default function Login({navigation}) {
     return (
         <View style={styles.container}>
             {/* <Image source={backImage} style={styles.backImage} /> */}
-            <View style={styles.whiteSheet}/>
+            <View />
                 <Text style={styles.questionmark}> ? </Text>
                 <Text style={styles.headerText}>The Mystery Chat</Text>
             <SafeAreaView style={styles.form}>
@@ -103,8 +103,9 @@ const styles = StyleSheet.create({
         paddingBottom: 24,
     },
     input: {
-        backgroundColor: "#1111",
+        backgroundColor: "white",
         height: 58,
+        width: '85%',
         marginBottom: 20,
         fontSize: 16,
         borderRadius: 10,
@@ -130,24 +131,25 @@ const styles = StyleSheet.create({
         borderRadius: 40,
     },
     form: {
+        width: '100%',
         flex: 1,
         justifyContent: 'center',
-        marginHorizontal: 30,
+        alignItems: 'center',
     },
     button: {
         backgroundColor: '#f57c00',
         height: 58,
+        width: '85%',
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 40,
+        marginTop: 20,
     },
     headerText: {
         fontSize: 40,
-        marginTop:40, 
+        marginTop:10, 
         flexDirection: 'row', 
         fontWeight: "bold",
-        marginTop: 10,
         color:'#50b848',
     },
     normalText: {
@@ -156,11 +158,10 @@ const styles = StyleSheet.create({
         color:'white',
     },
     questionmark: {
-        marginTop:40, 
+        marginTop:50, 
         flexDirection: 'row', 
         fontSize: 80,
         fontWeight: "bold",
-        marginTop: 10,
         color:'#50b848',
     }
 })

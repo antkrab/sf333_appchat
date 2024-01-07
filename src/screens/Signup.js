@@ -24,7 +24,9 @@ const Signup = ({ navigation }) => {
         }
     };
     return (
-        <View>
+        <View style={styles.container}>
+            <Text style={styles.questionmark}> ? </Text>
+            <Text style={styles.headerText}>The Mystery Chat</Text>
             <TextInput placeholder="Username" style={styles.input} onChangeText={(text) => setUsername(text)}/>
             <TextInput placeholder='Enter Email' style={styles.input} autoCapitalize='none' keyboardType='email-address' textContentType='emailAddress' autoFocus = {true} value={email} onChangeText={(text) => setEmail(text)} />
             <TextInput placeholder='Enter password' style={styles.input} autoCapitalize='none' autoCorrect={false} secureTextEntry={true} textContentType='password' value={password} onChangeText={(text) => setPassword(text)} />
@@ -45,5 +47,81 @@ const Signup = ({ navigation }) => {
 export default Signup;
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#5d2586',
+        alignItems: 'center',
+        
+    },
+    title:{
+        fontSize: 36,
+        fontWeight: 'bold',
+        color: "red",
+        alignSelf:"center",
+        paddingBottom: 24,
+    },
+    input: {
+        backgroundColor: "#fff",
+        height: 58,
+        width: '85%',
+        marginTop:10,
+        marginBottom: 10,
+        fontSize: 16,
+        borderRadius: 10,
+        padding: 12,
+    },
+    backImage:{
+        width :'100%',
+        height: 340,
+        position: "absolute",
+        top: 0,
+        resizeMode: 'cover',
+    },
+    whiteSheet: {
+        marginTop:220, 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        alignSelf: 'center',
+        width: '90%',
+        height:'35%',
+        position: "absolute",
+        buttom: 0,
+        backgroundColor: '#fff',
+        borderRadius: 40,
+    },
+    form: {
+        flex: 1,
+        justifyContent: 'center',
+        marginHorizontal: 30,
+    },
+    button: {
+        backgroundColor: '#f57c00',
+        height: 58,
+        width:'85%',
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 40,
+    },
+    headerText: {
+        fontSize: 40,
+        marginTop:10, 
+        marginBottom:10,
+        fontWeight: "bold",
+        color:'#50b848',
+    },
+    normalText: {
+        fontSize: 20,
+        marginTop: 30,
+        color:'white',
+    },
+    questionmark: {
+        marginTop:30, 
+        flexDirection: 'row', 
+        fontSize: 80,
+        fontWeight: "bold",
+        color:'#50b848',
+    }
 
 });
+
