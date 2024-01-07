@@ -49,7 +49,10 @@ export default function Login({navigation}) {
         <View style={styles.container}>
             {/* <Image source={backImage} style={styles.backImage} /> */}
             <View style={styles.whiteSheet}/>
+                <Text style={styles.questionmark}> ? </Text>
+                <Text style={styles.headerText}>The Mystery Chat</Text>
             <SafeAreaView style={styles.form}>
+                
                 <Text style={styles.title}></Text>
                 <TextInput
                     style={styles.input}
@@ -88,7 +91,9 @@ export default function Login({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: '#5d2586',
+        alignItems: 'center',
+        
     },
     title:{
         fontSize: 36,
@@ -113,12 +118,16 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
     },
     whiteSheet: {
-        width: '100%',
-        height:'75%',
-        position: 'absolute',
+        marginTop:220, 
+        flexDirection: 'row', 
+        alignItems: 'center', 
+        alignSelf: 'center',
+        width: '90%',
+        height:'35%',
+        position: "absolute",
         buttom: 0,
         backgroundColor: '#fff',
-        borderTopLeftRadius: 60,
+        borderRadius: 40,
     },
     form: {
         flex: 1,
@@ -132,5 +141,26 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 40,
+    },
+    headerText: {
+        fontSize: 40,
+        marginTop:40, 
+        flexDirection: 'row', 
+        fontWeight: "bold",
+        marginTop: 10,
+        color:'#50b848',
+    },
+    normalText: {
+        fontSize: 20,
+        marginTop: 30,
+        color:'white',
+    },
+    questionmark: {
+        marginTop:40, 
+        flexDirection: 'row', 
+        fontSize: 80,
+        fontWeight: "bold",
+        marginTop: 10,
+        color:'#50b848',
     }
 })
